@@ -30,6 +30,8 @@ const todoSlice = createSlice({
   },
 });
 
+// TODO ACTION.PAYLOAD WITH THE CONTENT
+
 export const { addItem } = todoSlice.actions;
 export const storeSelector = (state: RootState) => state.todo.items;
 export default todoSlice.reducer;
