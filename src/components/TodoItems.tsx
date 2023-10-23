@@ -24,7 +24,7 @@ export const TodoItems: React.FC = () => {
         <input
           type="text"
           value={firstValue}
-          onChange={(e) => {
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             setFirstValue(e.target.value);
           }}
         />
@@ -34,7 +34,7 @@ export const TodoItems: React.FC = () => {
         <input
           type="text"
           value={secondValue}
-          onChange={(e) => {
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             setSecondValue(e.target.value);
           }}
         />
