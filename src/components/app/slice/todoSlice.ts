@@ -1,31 +1,26 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 
-interface InitialState {
-  items: {
-    title: string;
-    description: string;
-  }[];
+export interface InitialState {
+  title: string;
+  description: string;
+  id: number;
 }
 
-const initialState: InitialState = {
-  items: [
-    {
-      title: "First task",
-      description: "Description of the first task",
-    },
-  ],
-};
+const initialState: InitialState[] = [
+  {
+    title: "Hello",
+    description: "This is a nice description",
+    id: Math.random(),
+  },
+];
 
 const todoSlice = createSlice({
   name: "todo",
   initialState,
   reducers: {
-    addItem: (state) => {
-      state.items.push({
-        title: "Second Task",
-        description: "Description of the second task",
-      });
+    addItem: (state, action: PayloadAction<InitialState>) => {
+      state.push(action.payload);
     },
   },
 });
@@ -33,5 +28,5 @@ const todoSlice = createSlice({
 // TODO ACTION.PAYLOAD WITH THE CONTENT
 
 export const { addItem } = todoSlice.actions;
-export const storeSelector = (state: RootState) => state.todo.items;
+export const storeSelector = (state: RootState) => state.todo;
 export default todoSlice.reducer;
