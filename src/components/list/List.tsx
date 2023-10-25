@@ -1,6 +1,6 @@
 import React from "react";
-import { storeSelector } from "./app/slice/todoSlice";
-import { useAppSelector } from "./app/hooks";
+import { storeSelector } from "../app/slice/todoSlice";
+import { useAppSelector } from "../app/hooks";
 
 export const List: React.FC = () => {
   const items = useAppSelector(storeSelector);

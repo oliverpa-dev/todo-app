@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "./todoitems.scss";
-import { addItem } from "./app/slice/todoSlice";
-import { useAppDispatch } from "./app/hooks";
-import { InitialState } from "./app/slice/todoSlice";
+import "./main.scss";
+import { addItem } from "../app/slice/todoSlice";
+import { useAppDispatch } from "../app/hooks";
+import { InitialState } from "../app/slice/todoSlice";
 
 export const TodoItems: React.FC = () => {
   const dispatch = useAppDispatch();
