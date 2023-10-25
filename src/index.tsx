@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
-import "./index.css";
+import "./index.scss";
 import { Provider } from "react-redux";
 import { store } from "./components/app/store";
+import { Todo } from "./components/todo/Todo";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -11,7 +11,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <Todo />
     </Provider>
   </React.StrictMode>
 );
