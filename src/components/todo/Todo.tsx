@@ -2,15 +2,15 @@ import React from "react";
 import { TodoItems } from "../todo-items/TodoItems";
 import { List } from "../list/List";
 import "./main.scss";
-import { Paper } from "@mui/material";
+import { Content } from "../content/Content";
 
 export const Todo = () => {
   return (
     <div className="todo">
-      <Paper elevation={24}>
+      <Content>
         <TodoItems />
         <List />
-      </Paper>
+      </Content>
     </div>
   );
 };
