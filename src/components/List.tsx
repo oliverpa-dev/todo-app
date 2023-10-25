@@ -8,7 +8,7 @@ export const List: React.FC = () => {
     <div className="todo-items">
       <div className="todo-items__heading">Your list of todos</div>
       {items.map((item) => (
-        <div key={Math.random()} className="todo-items__copy">
+        <div key={item.id} className="todo-items__copy">
           <div className="todo-items__copy__title">{item.title}</div>
           <div className="todo-items__copy__description">
             {item.description}
