@@ -20,12 +20,14 @@ const todoSlice = createSlice({
   initialState,
   reducers: {
     addItem: (state, action: PayloadAction<InitialState>) => {
-      state.push(action.payload);
+      if (
+        action.payload.title.length > 0 &&
+        action.payload.description.length > 0
+      )
+        state.push(action.payload);
     },
   },
 });
-
-// TODO ACTION.PAYLOAD WITH THE CONTENT
 
 export const { addItem } = todoSlice.actions;
 export const storeSelector = (state: RootState) => state.todo;
