@@ -37,14 +37,29 @@ export const TodoItems: React.FC = () => {
 
   return (
     <div className="todo-items">
-      <TextField id="standard-basic" label="Standard" variant="standard" />
+      <TextField
+        type="text"
+        id="standard-basic"
+        size="small"
+        label="Standard"
+        variant="outlined"
+        value={firstValue}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          handleFirstVal(e.target.value)
+        }
+      />
+      <TextField
+        type="text"
+        value={secondValue}
+        id="standard-basic"
+        size="small"
+        label="Standard"
+        variant="outlined"
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          handleSecondVal(e.target.value)
+        }
+      />
       <button onClick={() => dispatch(addItem(initialValue))}>Add</button>
-      <button
-        onClick={() => {
-          handleFirstVal(firstValue);
-          handleSecondVal(secondValue);
-        }}
-      ></button>
     </div>
   );
 };
