@@ -3,6 +3,7 @@ import "./main.scss";
 import { addItem } from "../app/slice/todoSlice";
 import { useAppDispatch } from "../app/hooks";
 import { InitialState } from "../app/slice/todoSlice";
+import { TextField } from "@mui/material";
 
 export const TodoItems: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -36,29 +37,7 @@ export const TodoItems: React.FC = () => {
 
   return (
     <div className="todo-items">
-      <div className="todo-items__heading">Add a new todo</div>
-      <div className="todo-items__copy">
-        <label>Fill in the title</label>
-        <input
-          type="text"
-          value={firstValue}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            // setFirstValue(e.target.value);
-            handleFirstVal(e.target.value);
-          }}
-        />
-      </div>
-      <div className="todo-items__copy">
-        <label>Feel in the description</label>
-        <input
-          type="text"
-          value={secondValue}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            // setSecondValue(e.target.value);
-            handleSecondVal(e.target.value);
-          }}
-        />
-      </div>
+      <TextField id="standard-basic" label="Standard" variant="standard" />
       <button onClick={() => dispatch(addItem(initialValue))}>Add</button>
       <button
         onClick={() => {
