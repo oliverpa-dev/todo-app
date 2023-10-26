@@ -4,6 +4,7 @@ import { addItem } from "../app/slice/todoSlice";
 import { useAppDispatch } from "../app/hooks";
 import { InitialState } from "../app/slice/todoSlice";
 import { TextField } from "@mui/material";
+import { Button } from "@mui/material";
 
 export const TodoItems: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -59,7 +60,13 @@ export const TodoItems: React.FC = () => {
           handleSecondVal(e.target.value)
         }
       />
-      <button onClick={() => dispatch(addItem(initialValue))}>Add</button>
+      <Button
+        onClick={() => dispatch(addItem(initialValue))}
+        size="small"
+        variant="contained"
+      >
+        ADD
+      </Button>
     </div>
   );
 };
