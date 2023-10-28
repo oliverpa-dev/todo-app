@@ -6,6 +6,15 @@ import { InitialState } from "../app/slice/todoSlice";
 import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
 
+interface Items {
+  type: string;
+  size: "small";
+  label: string;
+  variant: "outlined";
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
 export const TodoItems: React.FC = () => {
   const dispatch = useAppDispatch();
 
@@ -44,29 +53,35 @@ export const TodoItems: React.FC = () => {
     setSecondValue("");
   };
 
+  const fields: Items[] = [
+    {
+      type: "text",
+      size: "small",
+      label: "Title",
+      variant: "outlined",
+      value: firstValue,
+      onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+        handleFirstVal(e.target.value);
+      },
+    },
+    {
+      type: "text",
+      size: "small",
+      label: "Description",
+      variant: "outlined",
+      value: secondValue,
+      onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+        handleSecondVal(e.target.value);
+      },
+    },
+  ];
+
   return (
     <div className="todo-items">
       <h1>Add todo item:</h1>
-      <TextField
-        type="text"
-        size="small"
-        label="Title"
-        variant="outlined"
-        value={firstValue}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          handleFirstVal(e.target.value)
-        }
-      />
-      <TextField
-        type="text"
-        value={secondValue}
-        size="small"
-        label="Description"
-        variant="outlined"
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          handleSecondVal(e.target.value)
-        }
-      />
+      {fields.map((item) => {
+        if(item.label === '   ')
+      }
       <Button
         onClick={() => {
           dispatch(addItem(initialValue));
