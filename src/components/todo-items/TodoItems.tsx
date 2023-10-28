@@ -18,6 +18,7 @@ export const TodoItems: React.FC = () => {
     id: Math.random(),
   };
 
+  // Gets the latest value from the first input
   const handleFirstVal = (firstVal: string) => {
     if (firstVal) {
       setFirstValue(firstVal);
@@ -27,6 +28,7 @@ export const TodoItems: React.FC = () => {
     }
   };
 
+  // Gets the latest value from the the second input field
   const handleSecondVal = (secondVal: string) => {
     if (secondVal) {
       setSecondValue(secondVal);
@@ -36,13 +38,19 @@ export const TodoItems: React.FC = () => {
     }
   };
 
+  // Resets inputs values
+  const resetInputs = () => {
+    setFirstValue("");
+    setSecondValue("");
+  };
+
   return (
     <div className="todo-items">
+      <h1>Add todo item:</h1>
       <TextField
         type="text"
-        id="standard-basic"
         size="small"
-        label="Standard"
+        label="Title"
         variant="outlined"
         value={firstValue}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -52,16 +60,18 @@ export const TodoItems: React.FC = () => {
       <TextField
         type="text"
         value={secondValue}
-        id="standard-basic"
         size="small"
-        label="Standard"
+        label="Description"
         variant="outlined"
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
           handleSecondVal(e.target.value)
         }
       />
       <Button
-        onClick={() => dispatch(addItem(initialValue))}
+        onClick={() => {
+          dispatch(addItem(initialValue));
+          resetInputs();
+        }}
         size="small"
         variant="contained"
       >
