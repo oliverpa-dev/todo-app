@@ -4,13 +4,17 @@ import { List } from "../list/List";
 import "./main.scss";
 import { Content } from "../content/Content";
 
-export const Todo = () => {
+export const Todo: React.FC = () => {
   return (
     <div className="todo">
-      <Content>
-        <TodoItems />
-        <List />
-      </Content>
+      <>
+        <Content>
+          <TodoItems />
+        </Content>
+        <Content>
+          <List />
+        </Content>
+      </>
     </div>
   );
 };
