@@ -6,15 +6,6 @@ import { InitialState } from "../app/slice/todoSlice";
 import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
 
-interface Items {
-  type: string;
-  size: "small";
-  label: string;
-  variant: "outlined";
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
-
 export const TodoItems: React.FC = () => {
   const dispatch = useAppDispatch();
 
@@ -26,6 +17,8 @@ export const TodoItems: React.FC = () => {
     description: secondValue,
     id: Math.random(),
   };
+
+  const { title, description } = initialValue;
 
   // Gets the latest value from the first input
   const handleFirstVal = (firstVal: string) => {
@@ -53,43 +46,35 @@ export const TodoItems: React.FC = () => {
     setSecondValue("");
   };
 
-  const fields: Items[] = [
-    {
-      type: "text",
-      size: "small",
-      label: "Title",
-      variant: "outlined",
-      value: firstValue,
-      onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
-        handleFirstVal(e.target.value);
-      },
-    },
-    {
-      type: "text",
-      size: "small",
-      label: "Description",
-      variant: "outlined",
-      value: secondValue,
-      onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
-        handleSecondVal(e.target.value);
-      },
-    },
-  ];
+  const handleOnClick = () => {
+    if (firstValue.length > 0 && secondValue.length > 0) {
+      dispatch(addItem(initialValue));
+      resetInputs();
+    }
+  };
 
   return (
     <div className="todo-items">
       <h1>Add todo item:</h1>
-      {fields.map((item) => {
-        if(item.label === '   ')
-      }
-      <Button
-        onClick={() => {
-          dispatch(addItem(initialValue));
-          resetInputs();
-        }}
+      <TextField
         size="small"
-        variant="contained"
-      >
+        variant="outlined"
+        label="Title"
+        value={title}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          handleFirstVal(e.target.value)
+        }
+      />
+      <TextField
+        value={description}
+        size="small"
+        variant="outlined"
+        label="Description"
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          handleSecondVal(e.target.value)
+        }
+      />
+      <Button onClick={handleOnClick} size="small" variant="contained">
         ADD
       </Button>
     </div>
